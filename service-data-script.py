@@ -15,7 +15,7 @@ from pathlib import Path
 from playwright.async_api import async_playwright, TimeoutError as PWTimeout
 
 # ── All 25 districts of Sri Lanka ──────────────────────────────────────────
-DISTRICTS = [
+DISTRICTS = [ #add districts comma separately here
     "Vavuniya"
 ]
 
@@ -25,7 +25,7 @@ SCROLL_TIMES = 100     # Scrolls per district results panel
 PAUSE_MIN    = 2.0
 PAUSE_MAX    = 4.0
 
-CSV_FIELDS = [
+CSV_FIELDS = [ # CSV files columns
     "district", "name", "address", "phone",
     "website", "rating", "review_count",
     "category", "hours", "facilities", "maps_url",
@@ -172,7 +172,7 @@ async def extract_place_details(page):
 # ── District scraper ─────────────────────────────────────────────────────────
 
 async def scrape_district(page, district, writer, seen, csvfile):
-    query = f"vehicle+service+center+{district.replace(' ', '+')}+Sri+Lanka"
+    query = f"vehicle+service+center+{district.replace(' ', '+')}+Sri+Lanka"  ## This is the query use to put on the google map search bar
     search_url = f"https://www.google.com/maps/search/{query}"
 
     print(f"\n[{district}] → {search_url}")
